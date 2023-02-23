@@ -1,17 +1,21 @@
-// import React from 'react';
+import React from 'react';
 import { Formik, Form, Field } from 'formik';
+import shortid from 'shortid';
 
 const initialValues = {
   name: '',
   number: '',
 };
-export const ContactForm = () => {
-  const handeleSubmit = (values, { resetForm }) => {
-    console.log(values);
-    resetForm();
-  };
+export const ContactForm = ({ onAddContact }) => {
   return (
-    <Formik initialValues={initialValues} onSubmit={handeleSubmit}>
+    <Formik
+      initialValues={initialValues}
+      onSubmit={(values, { resetForm }) => {
+        onAddContact({ ...values, id: shortid.generate() });
+
+        resetForm();
+      }}
+    >
       <Form>
         <label>
           <Field

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import shortid from 'shortid';
+
 import { ContactForm } from './ContactForm/ContactForm';
 import { ContactList } from './Сontacts/Сontacts';
 import contacts from './contacts.json';
@@ -8,17 +8,15 @@ export class App extends Component {
   state = {
     contacts: contacts,
   };
-  addContact = values => {
-    const newContact = {
-      id: shortid.generate(),
-    };
-
-    this.state.contacts.filter(contact => contact.name === values.name).length
+  addContact = newContact => {
+    this.state.contacts.filter(contact => contact.name === newContact.name)
+      .length
       ? alert(`${newContact.name}: is already in contacts`)
       : this.setState(prevState => ({
-          contacts: [newContact, ...prevState.contacts],
+          contacts: [...prevState.contacts, newContact],
         }));
     console.log(contacts);
+    // });
   };
 
   deleteContact = contactId => {
@@ -30,7 +28,10 @@ export class App extends Component {
   render() {
     return (
       <div>
+        <h1>Phonebook</h1>
         <ContactForm onAddContact={this.addContact} />
+
+        <h2>Contacts</h2>
         <ContactList
           contacts={this.state.contacts}
           onDeleteContact={this.deleteContact}
