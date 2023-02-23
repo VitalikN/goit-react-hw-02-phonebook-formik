@@ -31,7 +31,10 @@ export class App extends Component {
     return (
       <div>
         <ContactForm onAddContact={this.addContact} />
-        <ContactList contacts={contacts} onDeleteContact={this.deleteContact} />
+        <ContactList
+          contacts={this.state.contacts}
+          onDeleteContact={this.deleteContact}
+        />
       </div>
     );
   }

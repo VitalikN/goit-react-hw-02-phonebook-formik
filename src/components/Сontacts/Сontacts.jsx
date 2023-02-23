@@ -9,10 +9,7 @@ export const ContactList = ({ contacts, onDeleteContact }) => {
             <p>
               {name}: {number}
             </p>
-            <button
-              type="button"
-              onClick={() => console.log(onDeleteContact(id))}
-            >
+            <button type="button" onClick={() => onDeleteContact(id)}>
               видалити
             </button>
           </li>
