@@ -1,6 +1,9 @@
 import React from 'react';
-import { Formik, Form, Field } from 'formik';
+import { Formik, Form } from 'formik';
 import shortid from 'shortid';
+import { Btn, Input } from './ContactForm.styled';
+
+import { BsFillPersonPlusFill } from 'react-icons/bs';
 
 const initialValues = {
   name: '',
@@ -18,7 +21,8 @@ export const ContactForm = ({ onAddContact }) => {
     >
       <Form>
         <label>
-          <Field
+          Name
+          <Input
             type="text"
             name="name"
             pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
@@ -27,7 +31,8 @@ export const ContactForm = ({ onAddContact }) => {
           />
         </label>
         <label>
-          <Field
+          Number
+          <Input
             type="tel"
             name="number"
             pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
@@ -35,7 +40,9 @@ export const ContactForm = ({ onAddContact }) => {
             required
           />
         </label>
-        <button type="submit">add</button>
+        <Btn type="submit">
+          <BsFillPersonPlusFill />
+        </Btn>
       </Form>
     </Formik>
   );

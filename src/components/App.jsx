@@ -4,6 +4,7 @@ import { ContactForm } from './ContactForm/ContactForm';
 import { ContactList } from './Сontacts/Сontacts';
 import contacts from './contacts.json';
 import { Filter } from './Filter/filter';
+import { Container, Title } from './App.styled';
 
 export class App extends Component {
   state = {
@@ -41,16 +42,16 @@ export class App extends Component {
 
   render() {
     return (
-      <div>
-        <h1>Phonebook</h1>
+      <Container>
+        <Title>Phonebook</Title>
         <ContactForm onAddContact={this.addContact} />
-        <h2>Contacts</h2>
+        <Title>Contacts</Title>
         <Filter value={this.state.filter} onChange={this.filterContacts} />
         <ContactList
           contacts={this.onFilterContacts()}
           onDeleteContact={this.deleteContact}
         />
-      </div>
+      </Container>
     );
   }
 }

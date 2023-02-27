@@ -1,20 +1,23 @@
 import React from 'react';
+import { List, Item, Btn } from './ContactList.styled';
+
+import { BsFillPersonXFill } from 'react-icons/bs';
 
 export const ContactList = ({ contacts, onDeleteContact }) => {
   return (
     <div>
-      <ul>
+      <List>
         {contacts.map(({ id, name, number }) => (
-          <li key={id}>
+          <Item key={id}>
             <p>
               {name}: {number}
             </p>
-            <button type="button" onClick={() => onDeleteContact(id)}>
-              видалити
-            </button>
-          </li>
+            <Btn type="button" onClick={() => onDeleteContact(id)}>
+              <BsFillPersonXFill />
+            </Btn>
+          </Item>
         ))}
-      </ul>
+      </List>
     </div>
   );
 };
