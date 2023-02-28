@@ -1,7 +1,6 @@
 import styled from '@emotion/styled';
-import { Field } from 'formik';
 
-export const Input = styled(Field)`
+export const Input = styled.input`
   display: flex;
   flex-direction: column;
   width: 100%;
